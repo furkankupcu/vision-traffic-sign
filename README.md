@@ -1,4 +1,4 @@
-# Vision-Kickstarter
+# Vision-Traffic-Sign 
 Docker based ML / CV project skeleton
 ## Create Development Environment in PyCharm
 Clone new project and create run/debug configurations with below settings in PyCharm
@@ -6,8 +6,8 @@ Clone new project and create run/debug configurations with below settings in PyC
 Open Preferences > Build,Execution,Deployment > Docker : Add docker server
 ### Create Dockerfile Configuration and Build Image / Create Container
 Create new run/debug configuration from Dockerfile template with below settings:
-- Image Tag: vision-kickstarter
-- Container name: vision-kickstarter
+- Image Tag: vision-traffic-sign
+- Container name: vision-traffic-sign
 - Context folder: .
 - Bind ports: 8888:8888
 - Bind mounts: {project-root-path}:/opt/project
@@ -16,7 +16,7 @@ Create new run/debug configuration from Dockerfile template with below settings:
 Run this file to build image and create container
 ### Create Docker Remote Interpreter
 **_Image building should be finished for create docker remote interpreter._**  
-Open Preferences > Project > Python interpreter > Add Python Interpreter : Select "Docker" and set "Image name" as "vision-kickstarter" then click "Ok"  
+Open Preferences > Project > Python interpreter > Add Python Interpreter : Select "Docker" and set "Image name" as "vision-traffic-sign" then click "Ok"  
 Configure "Path mappings" setting in Python Interpreter: Open "Edit Project Path Mappings" dialog window  
 Add new Path Mappings with below settings:
 - Local path: {project-root-path}
@@ -27,7 +27,7 @@ Create new run/debug configuration from "Flask server" template with below setti
 - Target: {project-root-path}/apps/service.py
 - FLASK_ENV: development
 - FLASK_DEBUG: checked
-- Python Interpreter: vision-kickstarter:latest
+- Python Interpreter: vision-traffic-sign:latest
 - Docker container settings 
     - Port bindings: 5000:5000
     - Volume bindings: {project-root-path}:/opt/project
@@ -42,15 +42,15 @@ Write that command template for run python app in exec or terminal: "python {pat
 Clone new project and create new image and container in project root path
 ### Build Image
 ```
-docker build -t vision-kickstarter .
+docker build -t vision-traffic-sign .
 ```
 ### Create Container
 ```
-docker run -v {project-root-path}:/opt/project -p 8888:8888 --name vision-kickstarter -it vision-kickstarter
+docker run -v {project-root-path}:/opt/project -p 8888:8888 --name vision-traffic-sign -it vision-traffic-sign
 ```
 ### Access Jupyter Notebook Server Token and Links
 ```
-docker exec vision-kickstarter jupyter notebook list
+docker exec vision-traffic-sign jupyter notebook list
 ```
 ### Run Python App in Container
 ```
@@ -60,7 +60,7 @@ Run client.py app on Flask (apps/service.py) container:
 ```
 docker exec {flask-service-container-id} python apps/client.py
 ```
-Run main.py app on vision-kickstarter container:
+Run main.py app on vision-traffic-sign container:
 ```
-docker exec vision-kickstarter python apps/main.py
+docker exec vision-traffic-sign python apps/main.py
 ```
